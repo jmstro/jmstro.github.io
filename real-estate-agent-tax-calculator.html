@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Real Estate Agent Tax Calculator 2026 + 2027 (How Much to Save From Each Commission)</title><meta name="description" content="Free quarterly estimated tax calculator for 1099 real estate agents. See how much of each commission check to save, your self-employment tax, and what to pay the IRS by January 15.">
+<link rel="canonical" href="https://jmstro.github.io/real-estate-agent-tax-calculator.html"><link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Real Estate Agent Tax Calculator 2026 + 2027 (How Much to Save From Each Commission)"><meta property="og:description" content="Free quarterly estimated tax calculator for 1099 real estate agents. See how much of each commission check to save, your self-employment tax, and what to pay the IRS by January 15."><meta property="og:url" content="https://jmstro.github.io/real-estate-agent-tax-calculator.html">
+<!--GSC-->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What percentage of my commission should I save for taxes?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on your profit and filing status, which is why the calculator shows your own set-aside rate. For many agents it lands somewhere around 20\u201330% before any state tax."}}, {"@type": "Question", "name": "My income is lumpy. Do I still pay four equal amounts?", "acceptedAnswer": {"@type": "Answer", "text": "Equal payments are simplest. If most of your closings come late in the year, the IRS annualized method (Form 2210, Schedule AI) may lower early-quarter penalties."}}]}</script>
+</head><body>
+<header><a class="brand" href="./">SetAside <span>Sheets</span></a><span class="tag">Free quarterly tax calculators</span></header>
+<main>
+<h1>Real estate agent commission tax calculator</h1>
+<p class="lead">Commission checks are big, uneven and come with nothing withheld. Enter your expected commissions and business costs, and the calculator shows the percentage of every check to set aside and the quarterly payments that keep you clear of IRS penalties.</p>
+<form id="calc" autocomplete="off">
+<fieldset><legend>About you</legend>
+<label><span>Tax year</span><select id="year"><option value="2026">2026 (Q4 due Jan 15, 2027)</option><option value="2027">2027</option></select></label>
+<label><span>Filing status</span><select id="status"><option value="single">Single</option><option value="mfj">Married filing jointly</option><option value="mfs">Married filing separately</option><option value="hoh">Head of household</option></select></label>
+<label><span id="w2-label">W-2 wages (yours + spouse if joint), if any</span><input id="w2" inputmode="decimal" placeholder="0"></label>
+</fieldset>
+<fieldset><legend>Income for the year</legend><label><span id="inc-label">Commissions received (your share after split)</span><input id="inc" inputmode="decimal" placeholder="0"></label><label><span id="inc2-label">Referral fees, bonuses & other income</span><input id="inc2" inputmode="decimal" placeholder="0"></label></fieldset>
+<fieldset><legend>Business expenses for the year</legend><label><span id="exp-desk-label">Brokerage desk & transaction fees</span><input id="exp-desk" inputmode="decimal" placeholder="0"></label><label><span id="exp-mls-label">MLS, board & association dues</span><input id="exp-mls" inputmode="decimal" placeholder="0"></label><label><span id="exp-lic-label">License, E&O insurance & continuing ed</span><input id="exp-lic" inputmode="decimal" placeholder="0"></label><label><span id="exp-mkt-label">Marketing, signs & photography</span><input id="exp-mkt" inputmode="decimal" placeholder="0"></label><label><span id="exp-meals-label">Business meals (50% deductible)</span><input id="exp-meals" inputmode="decimal" placeholder="0"></label><label><span id="exp-other-label">Other business expenses</span><input id="exp-other" inputmode="decimal" placeholder="0"></label></fieldset>
+<fieldset><legend>Business miles</legend><label><span id="miles1-label">Business miles, Jan–Jun</span><input id="miles1" inputmode="decimal" placeholder="0"></label><label><span id="miles2-label">Business miles, Jul–Dec</span><input id="miles2" inputmode="decimal" placeholder="0"></label><p class="note" id="mile-note"></p></fieldset>
+<details class="more"><summary>Payments, withholding &amp; state (optional)</summary>
+<label><span id="paid-label">Estimated payments already made this year</span><input id="paid" inputmode="decimal" placeholder="0"></label>
+<label><span id="withheld-label">Federal tax withheld from W-2 paychecks this year</span><input id="withheld" inputmode="decimal" placeholder="0"></label>
+<label><span id="lastyear-label">Last year's total tax (Form 1040, line 24)</span><input id="lastyear" inputmode="decimal" placeholder="0"></label>
+<label class="check"><input type="checkbox" id="high"> Last year's AGI was over $150,000 ($75,000 if married filing separately)</label>
+<label><span id="staterate-label">State income tax set-aside, % of profit</span><input id="staterate" inputmode="decimal" placeholder="e.g. 3"></label>
+</details>
+<button type="submit">Calculate</button>
+</form>
+<section id="results" hidden aria-live="polite">
+<h2>Your estimate</h2>
+<div class="big"><div><span>Set aside</span><strong id="r-rate"></strong><small>of every dollar of profit</small></div>
+<div><span>Quarterly federal payment</span><strong id="r-quarter"></strong><small>if you pay four even amounts</small></div></div>
+<table>
+<tr><td>Business profit</td><td id="r-profit"></td></tr>
+<tr><td>Mileage deduction (included above)</td><td id="r-miles"></td></tr>
+<tr><td>Self-employment tax</td><td id="r-se"></td></tr>
+<tr><td>Federal income tax your business adds</td><td id="r-fed"></td></tr>
+<tr><td>State set-aside</td><td id="r-state"></td></tr>
+<tr class="tot"><td>Total to set aside for the year</td><td id="r-total"></td></tr>
+<tr><td>Still to pay to cover your full federal bill</td><td id="r-full"></td></tr>
+<tr><td>Still to pay to reach the safe-harbor minimum (no penalty), by <span id="r-q4"></span></td><td id="r-min"></td></tr>
+</table>
+<p class="note">Due dates: <span id="r-due"></span>. Pay at <a href="https://www.irs.gov/payments/direct-pay" rel="nofollow">IRS Direct Pay</a>.</p>
+<div class="cta"><div><strong>Track it all year, not just once.</strong> The Real Estate Agent Commission &amp; Tax Tracker for Excel &amp; Google Sheets logs every payment, expense and mile, and updates this estimate automatically. Includes the 2026 and 2027 editions.</div><a class="btn" href="https://payhip.com/b/UiF2j">Get the tracker – $16.99</a></div>
+<div class="cta keeper"><div><strong>Finding deductions you missed?</strong> Keeper scans your bank and card transactions for write-offs.</div><a class="btn alt" href="#" rel="sponsored nofollow">Try Keeper</a></div>
+</section>
+<section><h2>Tips for Real estate agents</h2><ul><li><strong>Enter commissions after your brokerage split</strong> if your 1099 shows only your share. If the 1099 shows the gross commission, put the split in brokerage fees instead.</li><li><strong>Client gifts</strong> are deductible up to $25 per person per year.</li><li><strong>Driving to showings</strong> and listing appointments counts as business miles.</li></ul></section>
+<section><h2>Questions</h2><details><summary>What percentage of my commission should I save for taxes?</summary><p>It depends on your profit and filing status, which is why the calculator shows your own set-aside rate. For many agents it lands somewhere around 20–30% before any state tax.</p></details><details><summary>My income is lumpy. Do I still pay four equal amounts?</summary><p>Equal payments are simplest. If most of your closings come late in the year, the IRS annualized method (Form 2210, Schedule AI) may lower early-quarter penalties.</p></details><details><summary>Is this calculator accurate?</summary><p>It follows IRS brackets, standard deductions and the Social Security wage base for 2026 (Rev. Proc. 2025-32) and 2027 (Rev. Proc. 2026-35), and it simplifies a few things: no credits, no itemized deductions, no additional 0.9% Medicare tax, and a simplified QBI deduction. Treat it as a planning estimate, not tax advice.</p></details></section>
+<section><h2>Calculators for other jobs</h2><ul class="links"><li><a href="./">Freelancer & 1099</a></li><li><a href="doordash-uber-tax-calculator.html">DoorDash, Uber & Lyft</a></li><li><a href="etsy-seller-tax-calculator.html">Etsy, Shopify & eBay sellers</a></li><li><a href="hair-stylist-booth-rent-tax-calculator.html">Hair stylists & booth renters</a></li><li><a href="content-creator-tax-calculator.html">Content creators</a></li><li><a href="cleaning-business-tax-calculator.html">House cleaners</a></li></ul></section>
+</main>
+<footer><p><strong>Estimates only, not tax advice.</strong> This page runs entirely in your browser; nothing you type is sent anywhere. Not affiliated with the IRS or any app or marketplace named here. Some links are affiliate links.</p>
+<p>&copy; 2026 SetAside Sheets</p></footer>
+<script>window.PAGE={"income": ["inc", "inc2"], "expense": ["exp-desk", "exp-mls", "exp-lic", "exp-mkt", "exp-meals", "exp-other"], "half": ["exp-meals"], "miles": true};</script><script src="calc.js"></script>
+</body></html>

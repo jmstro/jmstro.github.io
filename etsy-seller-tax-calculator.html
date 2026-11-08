@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Etsy, Shopify & eBay Seller Tax Calculator 2026 + 2027 (Quarterly Estimated Tax)</title><meta name="description" content="Free quarterly estimated tax calculator for Etsy, Shopify, eBay and Amazon sellers. Works out real profit after fees, materials and shipping, plus self-employment tax and what to pay by January 15.">
+<link rel="canonical" href="https://jmstro.github.io/etsy-seller-tax-calculator.html"><link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Etsy, Shopify & eBay Seller Tax Calculator 2026 + 2027 (Quarterly Estimated Tax)"><meta property="og:description" content="Free quarterly estimated tax calculator for Etsy, Shopify, eBay and Amazon sellers. Works out real profit after fees, materials and shipping, plus self-employment tax and what to pay by January 15."><meta property="og:url" content="https://jmstro.github.io/etsy-seller-tax-calculator.html">
+<!--GSC-->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is selling on Etsy a hobby or a business?", "acceptedAnswer": {"@type": "Answer", "text": "If you sell regularly to make a profit, the IRS treats it as a business: you report it on Schedule C, can deduct expenses, and owe self-employment tax on the profit."}}, {"@type": "Question", "name": "I sold old personal stuff on eBay. Is that taxable?", "acceptedAnswer": {"@type": "Answer", "text": "Selling personal items for less than you paid is generally not taxable profit. This calculator is for items you make or buy to resell."}}]}</script>
+</head><body>
+<header><a class="brand" href="./">SetAside <span>Sheets</span></a><span class="tag">Free quarterly tax calculators</span></header>
+<main>
+<h1>Etsy, Shopify & eBay seller tax calculator</h1>
+<p class="lead">Your 1099-K shows gross sales, not profit. Enter your sales, then the fees, materials and shipping you paid, and this calculator works out your real profit, the tax on it, and what to pay each quarter.</p>
+<form id="calc" autocomplete="off">
+<fieldset><legend>About you</legend>
+<label><span>Tax year</span><select id="year"><option value="2026">2026 (Q4 due Jan 15, 2027)</option><option value="2027">2027</option></select></label>
+<label><span>Filing status</span><select id="status"><option value="single">Single</option><option value="mfj">Married filing jointly</option><option value="mfs">Married filing separately</option><option value="hoh">Head of household</option></select></label>
+<label><span id="w2-label">W-2 wages (yours + spouse if joint), if any</span><input id="w2" inputmode="decimal" placeholder="0"></label>
+</fieldset>
+<fieldset><legend>Income for the year</legend><label><span id="inc-label">Gross sales, including shipping charged to buyers</span><input id="inc" inputmode="decimal" placeholder="0"></label></fieldset>
+<fieldset><legend>Business expenses for the year</legend><label><span id="exp-fees-label">Platform, listing, payment & ad fees</span><input id="exp-fees" inputmode="decimal" placeholder="0"></label><label><span id="exp-cogs-label">Materials, inventory & cost of goods</span><input id="exp-cogs" inputmode="decimal" placeholder="0"></label><label><span id="exp-ship-label">Shipping labels & packaging</span><input id="exp-ship" inputmode="decimal" placeholder="0"></label><label><span id="exp-tools-label">Tools, software & equipment</span><input id="exp-tools" inputmode="decimal" placeholder="0"></label><label><span id="exp-other-label">Other business expenses</span><input id="exp-other" inputmode="decimal" placeholder="0"></label></fieldset>
+
+<details class="more"><summary>Payments, withholding &amp; state (optional)</summary>
+<label><span id="paid-label">Estimated payments already made this year</span><input id="paid" inputmode="decimal" placeholder="0"></label>
+<label><span id="withheld-label">Federal tax withheld from W-2 paychecks this year</span><input id="withheld" inputmode="decimal" placeholder="0"></label>
+<label><span id="lastyear-label">Last year's total tax (Form 1040, line 24)</span><input id="lastyear" inputmode="decimal" placeholder="0"></label>
+<label class="check"><input type="checkbox" id="high"> Last year's AGI was over $150,000 ($75,000 if married filing separately)</label>
+<label><span id="staterate-label">State income tax set-aside, % of profit</span><input id="staterate" inputmode="decimal" placeholder="e.g. 3"></label>
+</details>
+<button type="submit">Calculate</button>
+</form>
+<section id="results" hidden aria-live="polite">
+<h2>Your estimate</h2>
+<div class="big"><div><span>Set aside</span><strong id="r-rate"></strong><small>of every dollar of profit</small></div>
+<div><span>Quarterly federal payment</span><strong id="r-quarter"></strong><small>if you pay four even amounts</small></div></div>
+<table>
+<tr><td>Business profit</td><td id="r-profit"></td></tr>
+
+<tr><td>Self-employment tax</td><td id="r-se"></td></tr>
+<tr><td>Federal income tax your business adds</td><td id="r-fed"></td></tr>
+<tr><td>State set-aside</td><td id="r-state"></td></tr>
+<tr class="tot"><td>Total to set aside for the year</td><td id="r-total"></td></tr>
+<tr><td>Still to pay to cover your full federal bill</td><td id="r-full"></td></tr>
+<tr><td>Still to pay to reach the safe-harbor minimum (no penalty), by <span id="r-q4"></span></td><td id="r-min"></td></tr>
+</table>
+<p class="note">Due dates: <span id="r-due"></span>. Pay at <a href="https://www.irs.gov/payments/direct-pay" rel="nofollow">IRS Direct Pay</a>.</p>
+<div class="cta"><div><strong>Track it all year, not just once.</strong> The Online Seller Profit &amp; Tax Tracker for Excel &amp; Google Sheets logs every payment, expense, and updates this estimate automatically. Includes the 2026 and 2027 editions.</div><a class="btn" href="https://payhip.com/b/smFWa">Get the tracker – $14.99</a></div>
+<div class="cta keeper"><div><strong>Finding deductions you missed?</strong> Keeper scans your bank and card transactions for write-offs.</div><a class="btn alt" href="#" rel="sponsored nofollow">Try Keeper</a></div>
+</section>
+<section><h2>Tips for Etsy, Shopify & eBay sellers</h2><ul><li><strong>Start from gross, then subtract fees:</strong> your 1099-K reports gross receipts. Etsy, PayPal and Shopify fees are deductible, so include them.</li><li><strong>Cost of goods:</strong> materials only count when you sell the item (Schedule C Part III). Unsold inventory stays on the books.</li><li><strong>Sales tax you collected</strong> through the marketplace isn't your income. Leave it out if your report includes it.</li></ul></section>
+<section><h2>Questions</h2><details><summary>Is selling on Etsy a hobby or a business?</summary><p>If you sell regularly to make a profit, the IRS treats it as a business: you report it on Schedule C, can deduct expenses, and owe self-employment tax on the profit.</p></details><details><summary>I sold old personal stuff on eBay. Is that taxable?</summary><p>Selling personal items for less than you paid is generally not taxable profit. This calculator is for items you make or buy to resell.</p></details><details><summary>Is this calculator accurate?</summary><p>It follows IRS brackets, standard deductions and the Social Security wage base for 2026 (Rev. Proc. 2025-32) and 2027 (Rev. Proc. 2026-35), and it simplifies a few things: no credits, no itemized deductions, no additional 0.9% Medicare tax, and a simplified QBI deduction. Treat it as a planning estimate, not tax advice.</p></details></section>
+<section><h2>Calculators for other jobs</h2><ul class="links"><li><a href="./">Freelancer & 1099</a></li><li><a href="doordash-uber-tax-calculator.html">DoorDash, Uber & Lyft</a></li><li><a href="real-estate-agent-tax-calculator.html">Real estate agents</a></li><li><a href="hair-stylist-booth-rent-tax-calculator.html">Hair stylists & booth renters</a></li><li><a href="content-creator-tax-calculator.html">Content creators</a></li><li><a href="cleaning-business-tax-calculator.html">House cleaners</a></li></ul></section>
+</main>
+<footer><p><strong>Estimates only, not tax advice.</strong> This page runs entirely in your browser; nothing you type is sent anywhere. Not affiliated with the IRS or any app or marketplace named here. Some links are affiliate links.</p>
+<p>&copy; 2026 SetAside Sheets</p></footer>
+<script>window.PAGE={"income": ["inc"], "expense": ["exp-fees", "exp-cogs", "exp-ship", "exp-tools", "exp-other"], "half": [], "miles": false};</script><script src="calc.js"></script>
+</body></html>

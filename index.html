@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quarterly Estimated Tax Calculator 2026 + 2027 for Freelancers & 1099 Workers</title><meta name="description" content="Free 2026 and 2027 quarterly estimated tax calculator for freelancers and 1099 contractors. See your self-employment tax, federal income tax, what to pay by January 15, and how much of each payment to set aside.">
+<link rel="canonical" href="https://jmstro.github.io/"><link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Quarterly Estimated Tax Calculator 2026 + 2027 for Freelancers & 1099 Workers"><meta property="og:description" content="Free 2026 and 2027 quarterly estimated tax calculator for freelancers and 1099 contractors. See your self-employment tax, federal income tax, what to pay by January 15, and how much of each payment to set aside."><meta property="og:url" content="https://jmstro.github.io/">
+<!--GSC-->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I have to pay quarterly if I also have a W-2 job?", "acceptedAnswer": {"@type": "Answer", "text": "Not always. If your paycheck withholding covers enough of your total tax (see the safe-harbor result above), you can skip quarterly payments. Enter your W-2 wages and withholding to check."}}, {"@type": "Question", "name": "What happens if I miss a quarterly payment?", "acceptedAnswer": {"@type": "Answer", "text": "The IRS charges an underpayment penalty, which works like interest on the amount you were short for each quarter. Paying late is better than not paying, and you can catch up by the January due date to limit it."}}]}</script>
+</head><body>
+<header><a class="brand" href="./">SetAside <span>Sheets</span></a><span class="tag">Free quarterly tax calculators</span></header>
+<main>
+<h1>Freelancer & 1099 quarterly tax calculator</h1>
+<p class="lead">No one withholds tax from a 1099 check, so the IRS expects you to pay four times a year. Enter what you expect to earn and spend, and this calculator works out your self-employment tax, the federal income tax your freelance profit adds, and what to pay by each due date.</p>
+<form id="calc" autocomplete="off">
+<fieldset><legend>About you</legend>
+<label><span>Tax year</span><select id="year"><option value="2026">2026 (Q4 due Jan 15, 2027)</option><option value="2027">2027</option></select></label>
+<label><span>Filing status</span><select id="status"><option value="single">Single</option><option value="mfj">Married filing jointly</option><option value="mfs">Married filing separately</option><option value="hoh">Head of household</option></select></label>
+<label><span id="w2-label">W-2 wages (yours + spouse if joint), if any</span><input id="w2" inputmode="decimal" placeholder="0"></label>
+</fieldset>
+<fieldset><legend>Income for the year</legend><label><span id="inc-label">Freelance / 1099 income for the year</span><input id="inc" inputmode="decimal" placeholder="0"></label></fieldset>
+<fieldset><legend>Business expenses for the year</legend><label><span id="exp-soft-label">Software, tools & subscriptions</span><input id="exp-soft" inputmode="decimal" placeholder="0"></label><label><span id="exp-equip-label">Computer & equipment</span><input id="exp-equip" inputmode="decimal" placeholder="0"></label><label><span id="exp-office-label">Home office & internet (business share)</span><input id="exp-office" inputmode="decimal" placeholder="0"></label><label><span id="exp-other-label">Other business expenses</span><input id="exp-other" inputmode="decimal" placeholder="0"></label></fieldset>
+
+<details class="more"><summary>Payments, withholding &amp; state (optional)</summary>
+<label><span id="paid-label">Estimated payments already made this year</span><input id="paid" inputmode="decimal" placeholder="0"></label>
+<label><span id="withheld-label">Federal tax withheld from W-2 paychecks this year</span><input id="withheld" inputmode="decimal" placeholder="0"></label>
+<label><span id="lastyear-label">Last year's total tax (Form 1040, line 24)</span><input id="lastyear" inputmode="decimal" placeholder="0"></label>
+<label class="check"><input type="checkbox" id="high"> Last year's AGI was over $150,000 ($75,000 if married filing separately)</label>
+<label><span id="staterate-label">State income tax set-aside, % of profit</span><input id="staterate" inputmode="decimal" placeholder="e.g. 3"></label>
+</details>
+<button type="submit">Calculate</button>
+</form>
+<section id="results" hidden aria-live="polite">
+<h2>Your estimate</h2>
+<div class="big"><div><span>Set aside</span><strong id="r-rate"></strong><small>of every dollar of profit</small></div>
+<div><span>Quarterly federal payment</span><strong id="r-quarter"></strong><small>if you pay four even amounts</small></div></div>
+<table>
+<tr><td>Business profit</td><td id="r-profit"></td></tr>
+
+<tr><td>Self-employment tax</td><td id="r-se"></td></tr>
+<tr><td>Federal income tax your business adds</td><td id="r-fed"></td></tr>
+<tr><td>State set-aside</td><td id="r-state"></td></tr>
+<tr class="tot"><td>Total to set aside for the year</td><td id="r-total"></td></tr>
+<tr><td>Still to pay to cover your full federal bill</td><td id="r-full"></td></tr>
+<tr><td>Still to pay to reach the safe-harbor minimum (no penalty), by <span id="r-q4"></span></td><td id="r-min"></td></tr>
+</table>
+<p class="note">Due dates: <span id="r-due"></span>. Pay at <a href="https://www.irs.gov/payments/direct-pay" rel="nofollow">IRS Direct Pay</a>.</p>
+<div class="cta"><div><strong>Track it all year, not just once.</strong> The Freelancer Quarterly Tax Tracker for Excel &amp; Google Sheets logs every payment, expense, and updates this estimate automatically. Includes the 2026 and 2027 editions.</div><a class="btn" href="https://payhip.com/b/PzU38">Get the tracker – $14.99</a></div>
+<div class="cta keeper"><div><strong>Finding deductions you missed?</strong> Keeper scans your bank and card transactions for write-offs.</div><a class="btn alt" href="#" rel="sponsored nofollow">Try Keeper</a></div>
+</section>
+<section><h2>Tips for Freelancer & 1099</h2><ul><li><strong>Home office:</strong> the simplified method allows $5 per square foot of a space used regularly and only for work, up to 300 sq ft ($1,500).</li><li><strong>Health insurance:</strong> if you pay for your own and aren't eligible for an employer plan, the premiums are usually deductible on Schedule 1 (not entered here).</li><li><strong>Retirement:</strong> a SEP-IRA or Solo 401(k) contribution lowers income tax, but not self-employment tax.</li></ul></section>
+<section><h2>Questions</h2><details><summary>Do I have to pay quarterly if I also have a W-2 job?</summary><p>Not always. If your paycheck withholding covers enough of your total tax (see the safe-harbor result above), you can skip quarterly payments. Enter your W-2 wages and withholding to check.</p></details><details><summary>What happens if I miss a quarterly payment?</summary><p>The IRS charges an underpayment penalty, which works like interest on the amount you were short for each quarter. Paying late is better than not paying, and you can catch up by the January due date to limit it.</p></details><details><summary>Is this calculator accurate?</summary><p>It follows IRS brackets, standard deductions and the Social Security wage base for 2026 (Rev. Proc. 2025-32) and 2027 (Rev. Proc. 2026-35), and it simplifies a few things: no credits, no itemized deductions, no additional 0.9% Medicare tax, and a simplified QBI deduction. Treat it as a planning estimate, not tax advice.</p></details></section>
+<section><h2>Calculators for other jobs</h2><ul class="links"><li><a href="doordash-uber-tax-calculator.html">DoorDash, Uber & Lyft</a></li><li><a href="etsy-seller-tax-calculator.html">Etsy, Shopify & eBay sellers</a></li><li><a href="real-estate-agent-tax-calculator.html">Real estate agents</a></li><li><a href="hair-stylist-booth-rent-tax-calculator.html">Hair stylists & booth renters</a></li><li><a href="content-creator-tax-calculator.html">Content creators</a></li><li><a href="cleaning-business-tax-calculator.html">House cleaners</a></li></ul></section>
+</main>
+<footer><p><strong>Estimates only, not tax advice.</strong> This page runs entirely in your browser; nothing you type is sent anywhere. Not affiliated with the IRS or any app or marketplace named here. Some links are affiliate links.</p>
+<p>&copy; 2026 SetAside Sheets</p></footer>
+<script>window.PAGE={"income": ["inc"], "expense": ["exp-soft", "exp-equip", "exp-office", "exp-other"], "half": [], "miles": false};</script><script src="calc.js"></script>
+</body></html>

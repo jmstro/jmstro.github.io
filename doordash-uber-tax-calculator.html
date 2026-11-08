@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DoorDash, Uber & Lyft Tax Calculator 2026 + 2027 (Quarterly Estimated Tax)</title><meta name="description" content="Free 2026/2027 tax calculator for DoorDash, Uber Eats, Uber, Lyft, Instacart and Spark drivers. Includes the IRS mileage deduction, self-employment tax, and your quarterly payment due January 15.">
+<link rel="canonical" href="https://jmstro.github.io/doordash-uber-tax-calculator.html"><link rel="stylesheet" href="style.css">
+<meta property="og:title" content="DoorDash, Uber & Lyft Tax Calculator 2026 + 2027 (Quarterly Estimated Tax)"><meta property="og:description" content="Free 2026/2027 tax calculator for DoorDash, Uber Eats, Uber, Lyft, Instacart and Spark drivers. Includes the IRS mileage deduction, self-employment tax, and your quarterly payment due January 15."><meta property="og:url" content="https://jmstro.github.io/doordash-uber-tax-calculator.html">
+<!--GSC-->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I owe tax if my 1099 is under $600?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All self-employment profit is taxable, and self-employment tax applies once net earnings reach $400, whether or not you get a 1099."}}, {"@type": "Question", "name": "Should I use the mileage rate or actual car expenses?", "acceptedAnswer": {"@type": "Answer", "text": "Most full-time drivers come out ahead with the standard mileage rate, and it's far less record-keeping. If you choose actual expenses, you generally have to stick with that method for that car."}}]}</script>
+</head><body>
+<header><a class="brand" href="./">SetAside <span>Sheets</span></a><span class="tag">Free quarterly tax calculators</span></header>
+<main>
+<h1>DoorDash, Uber & Lyft driver tax calculator</h1>
+<p class="lead">Delivery and rideshare apps don't withhold taxes, but your miles are usually your biggest deduction. Enter what you earned across all apps (tips included) and the business miles you drove. The calculator applies the IRS standard mileage rate and shows what to set aside and what to pay each quarter.</p>
+<form id="calc" autocomplete="off">
+<fieldset><legend>About you</legend>
+<label><span>Tax year</span><select id="year"><option value="2026">2026 (Q4 due Jan 15, 2027)</option><option value="2027">2027</option></select></label>
+<label><span>Filing status</span><select id="status"><option value="single">Single</option><option value="mfj">Married filing jointly</option><option value="mfs">Married filing separately</option><option value="hoh">Head of household</option></select></label>
+<label><span id="w2-label">W-2 wages (yours + spouse if joint), if any</span><input id="w2" inputmode="decimal" placeholder="0"></label>
+</fieldset>
+<fieldset><legend>Income for the year</legend><label><span id="inc-label">Earnings from all apps, including tips</span><input id="inc" inputmode="decimal" placeholder="0"></label><label><span id="inc2-label">Promotions, bonuses & other gig income</span><input id="inc2" inputmode="decimal" placeholder="0"></label></fieldset>
+<fieldset><legend>Business expenses for the year</legend><label><span id="exp-phone-label">Phone & data plan (business share)</span><input id="exp-phone" inputmode="decimal" placeholder="0"></label><label><span id="exp-bags-label">Hot bags, mounts & chargers</span><input id="exp-bags" inputmode="decimal" placeholder="0"></label><label><span id="exp-tolls-label">Tolls & parking (not covered by the app)</span><input id="exp-tolls" inputmode="decimal" placeholder="0"></label><label><span id="exp-other-label">Other business expenses</span><input id="exp-other" inputmode="decimal" placeholder="0"></label></fieldset>
+<fieldset><legend>Business miles</legend><label><span id="miles1-label">Business miles, Jan–Jun</span><input id="miles1" inputmode="decimal" placeholder="0"></label><label><span id="miles2-label">Business miles, Jul–Dec</span><input id="miles2" inputmode="decimal" placeholder="0"></label><p class="note" id="mile-note"></p></fieldset>
+<details class="more"><summary>Payments, withholding &amp; state (optional)</summary>
+<label><span id="paid-label">Estimated payments already made this year</span><input id="paid" inputmode="decimal" placeholder="0"></label>
+<label><span id="withheld-label">Federal tax withheld from W-2 paychecks this year</span><input id="withheld" inputmode="decimal" placeholder="0"></label>
+<label><span id="lastyear-label">Last year's total tax (Form 1040, line 24)</span><input id="lastyear" inputmode="decimal" placeholder="0"></label>
+<label class="check"><input type="checkbox" id="high"> Last year's AGI was over $150,000 ($75,000 if married filing separately)</label>
+<label><span id="staterate-label">State income tax set-aside, % of profit</span><input id="staterate" inputmode="decimal" placeholder="e.g. 3"></label>
+</details>
+<button type="submit">Calculate</button>
+</form>
+<section id="results" hidden aria-live="polite">
+<h2>Your estimate</h2>
+<div class="big"><div><span>Set aside</span><strong id="r-rate"></strong><small>of every dollar of profit</small></div>
+<div><span>Quarterly federal payment</span><strong id="r-quarter"></strong><small>if you pay four even amounts</small></div></div>
+<table>
+<tr><td>Business profit</td><td id="r-profit"></td></tr>
+<tr><td>Mileage deduction (included above)</td><td id="r-miles"></td></tr>
+<tr><td>Self-employment tax</td><td id="r-se"></td></tr>
+<tr><td>Federal income tax your business adds</td><td id="r-fed"></td></tr>
+<tr><td>State set-aside</td><td id="r-state"></td></tr>
+<tr class="tot"><td>Total to set aside for the year</td><td id="r-total"></td></tr>
+<tr><td>Still to pay to cover your full federal bill</td><td id="r-full"></td></tr>
+<tr><td>Still to pay to reach the safe-harbor minimum (no penalty), by <span id="r-q4"></span></td><td id="r-min"></td></tr>
+</table>
+<p class="note">Due dates: <span id="r-due"></span>. Pay at <a href="https://www.irs.gov/payments/direct-pay" rel="nofollow">IRS Direct Pay</a>.</p>
+<div class="cta"><div><strong>Track it all year, not just once.</strong> The Rideshare &amp; Delivery Driver Tax Tracker for Excel &amp; Google Sheets logs every payment, expense and mile, and updates this estimate automatically. Includes the 2026 and 2027 editions.</div><a class="btn" href="https://payhip.com/b/H3SIQ">Get the tracker – $12.99</a></div>
+<div class="cta keeper"><div><strong>Finding deductions you missed?</strong> Keeper scans your bank and card transactions for write-offs.</div><a class="btn alt" href="#" rel="sponsored nofollow">Try Keeper</a></div>
+</section>
+<section><h2>Tips for DoorDash, Uber & Lyft</h2><ul><li><strong>Miles count from your first trip:</strong> miles driven to a pickup, between orders and while working count. Commuting from home to a regular workplace doesn't, but most app drivers have no regular workplace.</li><li><strong>Mileage rate covers the car:</strong> if you use the standard mileage rate, don't also deduct gas, repairs, insurance or depreciation.</li><li><strong>Keep a log:</strong> the IRS wants date, miles and purpose. App mileage reports often miss the miles between orders.</li></ul></section>
+<section><h2>Questions</h2><details><summary>Do I owe tax if my 1099 is under $600?</summary><p>Yes. All self-employment profit is taxable, and self-employment tax applies once net earnings reach $400, whether or not you get a 1099.</p></details><details><summary>Should I use the mileage rate or actual car expenses?</summary><p>Most full-time drivers come out ahead with the standard mileage rate, and it's far less record-keeping. If you choose actual expenses, you generally have to stick with that method for that car.</p></details><details><summary>Is this calculator accurate?</summary><p>It follows IRS brackets, standard deductions and the Social Security wage base for 2026 (Rev. Proc. 2025-32) and 2027 (Rev. Proc. 2026-35), and it simplifies a few things: no credits, no itemized deductions, no additional 0.9% Medicare tax, and a simplified QBI deduction. Treat it as a planning estimate, not tax advice.</p></details></section>
+<section><h2>Calculators for other jobs</h2><ul class="links"><li><a href="./">Freelancer & 1099</a></li><li><a href="etsy-seller-tax-calculator.html">Etsy, Shopify & eBay sellers</a></li><li><a href="real-estate-agent-tax-calculator.html">Real estate agents</a></li><li><a href="hair-stylist-booth-rent-tax-calculator.html">Hair stylists & booth renters</a></li><li><a href="content-creator-tax-calculator.html">Content creators</a></li><li><a href="cleaning-business-tax-calculator.html">House cleaners</a></li></ul></section>
+</main>
+<footer><p><strong>Estimates only, not tax advice.</strong> This page runs entirely in your browser; nothing you type is sent anywhere. Not affiliated with the IRS or any app or marketplace named here. Some links are affiliate links.</p>
+<p>&copy; 2026 SetAside Sheets</p></footer>
+<script>window.PAGE={"income": ["inc", "inc2"], "expense": ["exp-phone", "exp-bags", "exp-tolls", "exp-other"], "half": [], "miles": true};</script><script src="calc.js"></script>
+</body></html>

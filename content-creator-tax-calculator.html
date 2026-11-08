@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Content Creator Tax Calculator 2026 + 2027 (YouTube, TikTok, Brand Deals)</title><meta name="description" content="Free quarterly estimated tax calculator for YouTubers, TikTokers, streamers and influencers. Covers AdSense, brand deals and affiliate income, gear deductions, self-employment tax and what to pay by January 15.">
+<link rel="canonical" href="https://jmstro.github.io/content-creator-tax-calculator.html"><link rel="stylesheet" href="style.css">
+<meta property="og:title" content="Content Creator Tax Calculator 2026 + 2027 (YouTube, TikTok, Brand Deals)"><meta property="og:description" content="Free quarterly estimated tax calculator for YouTubers, TikTokers, streamers and influencers. Covers AdSense, brand deals and affiliate income, gear deductions, self-employment tax and what to pay by January 15."><meta property="og:url" content="https://jmstro.github.io/content-creator-tax-calculator.html">
+<!--GSC-->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I owe taxes on YouTube money if I made under $600?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All income is taxable, and self-employment tax applies once your net earnings reach $400."}}, {"@type": "Question", "name": "Is my phone deductible?", "acceptedAnswer": {"@type": "Answer", "text": "The business-use share is. If you use your phone 60% for content, deduct 60% of the cost and the plan."}}]}</script>
+</head><body>
+<header><a class="brand" href="./">SetAside <span>Sheets</span></a><span class="tag">Free quarterly tax calculators</span></header>
+<main>
+<h1>Content creator & influencer tax calculator</h1>
+<p class="lead">AdSense, sponsorships and affiliate payouts are all self-employment income, and no tax is withheld. Enter your income streams and costs, and the calculator shows your set-aside rate and quarterly payments.</p>
+<form id="calc" autocomplete="off">
+<fieldset><legend>About you</legend>
+<label><span>Tax year</span><select id="year"><option value="2026">2026 (Q4 due Jan 15, 2027)</option><option value="2027">2027</option></select></label>
+<label><span>Filing status</span><select id="status"><option value="single">Single</option><option value="mfj">Married filing jointly</option><option value="mfs">Married filing separately</option><option value="hoh">Head of household</option></select></label>
+<label><span id="w2-label">W-2 wages (yours + spouse if joint), if any</span><input id="w2" inputmode="decimal" placeholder="0"></label>
+</fieldset>
+<fieldset><legend>Income for the year</legend><label><span id="inc-label">Ad revenue (AdSense, TikTok, Twitch, etc.)</span><input id="inc" inputmode="decimal" placeholder="0"></label><label><span id="inc2-label">Brand deals & sponsorships</span><input id="inc2" inputmode="decimal" placeholder="0"></label><label><span id="inc3-label">Affiliate, merch & other income</span><input id="inc3" inputmode="decimal" placeholder="0"></label></fieldset>
+<fieldset><legend>Business expenses for the year</legend><label><span id="exp-gear-label">Cameras, mics, lighting & computer</span><input id="exp-gear" inputmode="decimal" placeholder="0"></label><label><span id="exp-soft-label">Editing software & subscriptions</span><input id="exp-soft" inputmode="decimal" placeholder="0"></label><label><span id="exp-help-label">Editors, designers & assistants</span><input id="exp-help" inputmode="decimal" placeholder="0"></label><label><span id="exp-other-label">Other business expenses</span><input id="exp-other" inputmode="decimal" placeholder="0"></label></fieldset>
+
+<details class="more"><summary>Payments, withholding &amp; state (optional)</summary>
+<label><span id="paid-label">Estimated payments already made this year</span><input id="paid" inputmode="decimal" placeholder="0"></label>
+<label><span id="withheld-label">Federal tax withheld from W-2 paychecks this year</span><input id="withheld" inputmode="decimal" placeholder="0"></label>
+<label><span id="lastyear-label">Last year's total tax (Form 1040, line 24)</span><input id="lastyear" inputmode="decimal" placeholder="0"></label>
+<label class="check"><input type="checkbox" id="high"> Last year's AGI was over $150,000 ($75,000 if married filing separately)</label>
+<label><span id="staterate-label">State income tax set-aside, % of profit</span><input id="staterate" inputmode="decimal" placeholder="e.g. 3"></label>
+</details>
+<button type="submit">Calculate</button>
+</form>
+<section id="results" hidden aria-live="polite">
+<h2>Your estimate</h2>
+<div class="big"><div><span>Set aside</span><strong id="r-rate"></strong><small>of every dollar of profit</small></div>
+<div><span>Quarterly federal payment</span><strong id="r-quarter"></strong><small>if you pay four even amounts</small></div></div>
+<table>
+<tr><td>Business profit</td><td id="r-profit"></td></tr>
+
+<tr><td>Self-employment tax</td><td id="r-se"></td></tr>
+<tr><td>Federal income tax your business adds</td><td id="r-fed"></td></tr>
+<tr><td>State set-aside</td><td id="r-state"></td></tr>
+<tr class="tot"><td>Total to set aside for the year</td><td id="r-total"></td></tr>
+<tr><td>Still to pay to cover your full federal bill</td><td id="r-full"></td></tr>
+<tr><td>Still to pay to reach the safe-harbor minimum (no penalty), by <span id="r-q4"></span></td><td id="r-min"></td></tr>
+</table>
+<p class="note">Due dates: <span id="r-due"></span>. Pay at <a href="https://www.irs.gov/payments/direct-pay" rel="nofollow">IRS Direct Pay</a>.</p>
+<div class="cta"><div><strong>Track it all year, not just once.</strong> The Content Creator Income &amp; Tax Tracker for Excel &amp; Google Sheets logs every payment, expense, and updates this estimate automatically. Includes the 2026 and 2027 editions.</div><a class="btn" href="https://payhip.com/b/6Zbc5">Get the tracker – $14.99</a></div>
+<div class="cta keeper"><div><strong>Finding deductions you missed?</strong> Keeper scans your bank and card transactions for write-offs.</div><a class="btn alt" href="#" rel="sponsored nofollow">Try Keeper</a></div>
+</section>
+<section><h2>Tips for Content creators</h2><ul><li><strong>Free products from brands are income</strong> at fair market value when you receive them as payment.</li><li><strong>Gear:</strong> equipment used for content can usually be deducted in full the year you buy it.</li><li><strong>Contractors:</strong> if you pay an editor $600 or more, you may need to send them a 1099-NEC (rising to $2,000 for payments made after 2025).</li></ul></section>
+<section><h2>Questions</h2><details><summary>Do I owe taxes on YouTube money if I made under $600?</summary><p>Yes. All income is taxable, and self-employment tax applies once your net earnings reach $400.</p></details><details><summary>Is my phone deductible?</summary><p>The business-use share is. If you use your phone 60% for content, deduct 60% of the cost and the plan.</p></details><details><summary>Is this calculator accurate?</summary><p>It follows IRS brackets, standard deductions and the Social Security wage base for 2026 (Rev. Proc. 2025-32) and 2027 (Rev. Proc. 2026-35), and it simplifies a few things: no credits, no itemized deductions, no additional 0.9% Medicare tax, and a simplified QBI deduction. Treat it as a planning estimate, not tax advice.</p></details></section>
+<section><h2>Calculators for other jobs</h2><ul class="links"><li><a href="./">Freelancer & 1099</a></li><li><a href="doordash-uber-tax-calculator.html">DoorDash, Uber & Lyft</a></li><li><a href="etsy-seller-tax-calculator.html">Etsy, Shopify & eBay sellers</a></li><li><a href="real-estate-agent-tax-calculator.html">Real estate agents</a></li><li><a href="hair-stylist-booth-rent-tax-calculator.html">Hair stylists & booth renters</a></li><li><a href="cleaning-business-tax-calculator.html">House cleaners</a></li></ul></section>
+</main>
+<footer><p><strong>Estimates only, not tax advice.</strong> This page runs entirely in your browser; nothing you type is sent anywhere. Not affiliated with the IRS or any app or marketplace named here. Some links are affiliate links.</p>
+<p>&copy; 2026 SetAside Sheets</p></footer>
+<script>window.PAGE={"income": ["inc", "inc2", "inc3"], "expense": ["exp-gear", "exp-soft", "exp-help", "exp-other"], "half": [], "miles": false};</script><script src="calc.js"></script>
+</body></html>
