@@ -1,5 +1,5 @@
 /* SetAside Sheets – quarterly estimated tax calculator engine. Estimates only, not tax advice. */
-var KEEPER_URL = ""; // filled in once the Keeper Tax affiliate link exists
+var KEEPER_URL = "https://keepertax.go2cloud.org/aff_c?offer_id=25&aff_id=2174";
 var YEARS = {
   2026: { br: [[0.10,0,0,0,0],[0.12,12400,24800,12400,17700],[0.22,50400,100800,50400,67450],[0.24,105700,211400,105700,105700],[0.32,201775,403550,201775,201750],[0.35,256225,512450,256225,256200],[0.37,640600,768700,384350,640600]],
           std: [16100,32200,16100,24150], wb: 184500, m1: 0.725, m2: 0.76,
@@ -87,7 +87,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
   form.addEventListener("input", run);
   form.addEventListener("submit", function (e) { e.preventDefault(); run(); $("results").scrollIntoView({ behavior: "smooth" }); });
   var k = document.querySelectorAll(".keeper");
-  for (var i = 0; i < k.length; i++) { if (KEEPER_URL) { k[i].querySelector("a").href = KEEPER_URL; } else { k[i].style.display = "none"; } }
+  for (var i = 0; i < k.length; i++) { if (KEEPER_URL) { var pg = (location.pathname.split("/").pop() || "index").replace(".html", ""); k[i].querySelector("a").href = KEEPER_URL + "&aff_sub=" + encodeURIComponent(pg); } else { k[i].style.display = "none"; } }
   run();
 });
 if (typeof module !== "undefined") module.exports = { estimate: estimate, incomeTax: incomeTax };
